@@ -2,7 +2,6 @@
 
 ![Python](https://img.shields.io/badge/Python-3.7%2B-blue)
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green)
-![License](https://img.shields.io/badge/License-MIT-yellow)
 
 A computer vision project that implements multiple techniques to detect and count people in beach surveillance images. This system provides various methods for crowd analysis and visualization tools for comparing different detection approaches.
 
@@ -15,7 +14,6 @@ A computer vision project that implements multiple techniques to detect and coun
 - [Usage](#usage)
 - [Results Visualization](#results-visualization)
 - [Parameter Tuning](#parameter-tuning)
-- [Contributing](#contributing)
 
 ## 🔍 Overview
 This project focuses on analyzing beach crowd patterns using computer vision techniques. It implements multiple detection methods and provides comprehensive visualization tools for analyzing the results. The system is designed to handle various beach conditions and crowd densities.
