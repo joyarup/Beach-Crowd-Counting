@@ -22,10 +22,11 @@ An advanced computer vision system for real-time crowd monitoring and analysis i
 - [Installation](#-installation)
 - [Usage](#-usage)
 - [Technical Details](#-technical-details)
-- [Configuration](#-configuration)
 - [Results](#-results)
 - [Contributing](#-contributing)
+- [Future Improvements](#-future-improvements)
 - [License](#-license)
+- [Contact](#-contact)
 
 ---
 
@@ -59,9 +60,6 @@ An advanced computer vision system for real-time crowd monitoring and analysis i
 ```
 beach_monitoring/
 ├── src/
-│   ├── config/                 # Configuration files
-│   │   ├── config.yaml        # System parameters
-│   │   └── default_params.py  # Parameter handling
 │   ├── utils/                 # Utility functions
 │   │   └── image_loader.py    # Image processing utilities
 │   ├── detection/             # Core detection modules
@@ -86,7 +84,6 @@ beach_monitoring/
 - SciPy
 - Matplotlib
 - Pandas
-- PyYAML
 
 ### Setup Steps
 
@@ -123,14 +120,6 @@ cd src
 python main.py
 ```
 
-### Configuration
-
-Modify `config/config.yaml` to adjust:
-- Detection parameters
-- Background modeling settings
-- Evaluation metrics
-- Visualization options
-
 ---
 
 ## 🔧 Technical Details
@@ -140,13 +129,45 @@ Modify `config/config.yaml` to adjust:
 - Region-specific processing for water and sand areas
 - Robust to lighting changes and environmental factors
 
-### People Detection
-- Multi-scale detection for varying distances
-- Adaptive thresholding based on image regions
-- Shape and size-based filtering
+### People Detection System
+The system employs a sophisticated multi-scale detection approach optimized for beach environments:
+
+#### Multi-Scale Processing
+- Uses three different scales (1.0, 0.75, 0.5) to detect people at varying distances
+- Adapts detection parameters based on scale to handle perspective changes
+- Scale-specific size filtering for accurate detection at different distances
+
+#### Region-Specific Processing
+- Separate processing for upper (distant) and lower (near) regions
+- Adaptive thresholding with different sensitivities:
+  - More sensitive parameters for distant objects (upper region)
+  - Less sensitive parameters for near objects (lower region)
+- Ignores detections in the top 40% of the image to reduce false positives
+
+#### Detection Pipeline
+1. **Pre-processing**:
+   - Grayscale conversion
+   - Background subtraction
+   - Gaussian blur for noise reduction
+
+2. **Contour Detection**:
+   - Scale-dependent morphological operations
+   - Dynamic kernel size adjustment based on scale
+   - Adaptive thresholding for different image regions
+
+3. **Filtering Mechanism**:
+   - Area-based filtering with scale-adjusted thresholds
+   - Aspect ratio analysis (0.2-4.0 for distant objects, 0.3-3.0 for near objects)
+   - Solidity threshold adaptation (0.2 for distant, 0.3 for near objects)
+   - Convex hull analysis for shape verification
+
+4. **Post-processing**:
+   - Contour scaling and normalization
+   - Final mask generation
+   - Morphological cleanup operations
 
 ### Evaluation System
-- Ground truth comparison
+- Ground truth comparison capability
 - Multiple performance metrics
 - Per-image and overall statistics
 
@@ -179,38 +200,18 @@ We welcome contributions! Here's how you can help:
 
 ---
 
-## 📈 Future Improvements
-
-- [ ] Deep learning integration
-- [ ] Real-time processing optimization
-- [ ] Weather condition adaptation
-- [ ] Mobile deployment
-- [ ] Time-series analysis
-- [ ] Crowd density estimation
-- [ ] Automated alert system
-- [ ] API development
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
 ## 👥 Contact
 
-Joyarup Mitra - [@joyarup](https://github.com/joyarup) - your.email@example.com
+Arup Sarkar- [@joyarup](https://github.com/joyarup) - your.email@example.com
 
 Project Link: [https://github.com/joyarup/Beach-Crowd-Counting](https://github.com/joyarup/Beach-Crowd-Counting)
 
 ---
 
 <div align="center">
-<p>Built with ❤️ by Joyarup Mitra</p>
+<p>Built with ❤️ by Arup Sarkar</p>
 
 <p>
 If you find this project useful, please consider giving it a ⭐!
 </p>
 </div>
-
