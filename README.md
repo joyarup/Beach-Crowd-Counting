@@ -8,7 +8,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/joyarup/Beach-Crowd-Counting/graphs/commit-activity)
 
 <p align="center">
-An advanced computer vision system for real-time crowd monitoring and counting in beach environments, combining robust background modeling with multi-scale detection techniques.
+A computer vision system for crowd monitoring and counting in beach environments, combining background modeling with multi-scale detection techniques.
 </p>
 
 </div>
