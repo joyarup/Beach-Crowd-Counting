@@ -1,169 +1,216 @@
-# 🏖️ Beach Crowd Detection System
+# 🌊 Beach Crowd Monitoring System
 
-![Python](https://img.shields.io/badge/Python-3.7%2B-blue)
-![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green)
+<div align="center">
 
-A computer vision project that implements multiple techniques to detect and count people in beach surveillance images. This system provides various methods for crowd analysis and visualization tools for comparing different detection approaches.
+![Beach Monitoring](https://img.shields.io/badge/🏖️-Beach%20Monitoring-blue)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green.svg)](https://opencv.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/joyarup/Beach-Crowd-Counting/graphs/commit-activity)
 
-## 📋 Table of Contents
-- [Overview](#overview)
-- [Methods Implemented](#methods-implemented)
-- [Project Structure](#project-structure)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Results Visualization](#results-visualization)
-- [Parameter Tuning](#parameter-tuning)
+<p align="center">
+An advanced computer vision system for real-time crowd monitoring and analysis in beach environments, combining robust background modeling with multi-scale detection techniques.
+</p>
 
-## 🔍 Overview
-This project focuses on analyzing beach crowd patterns using computer vision techniques. It implements multiple detection methods and provides comprehensive visualization tools for analyzing the results. The system is designed to handle various beach conditions and crowd densities.
+</div>
 
-## 🛠️ Methods Implemented
+---
 
-### 1. Background Subtraction Method
-- Median background modeling
-- Adaptive thresholding
-- Morphological operations for noise reduction
-- Connected component analysis
+## 📑 Table of Contents
+- [Features](#-features)
+- [System Architecture](#-system-architecture)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Technical Details](#-technical-details)
+- [Configuration](#-configuration)
+- [Results](#-results)
+- [Contributing](#-contributing)
+- [License](#-license)
 
-### 2. Edge Detection with CLAHE
-- Contrast Limited Adaptive Histogram Equalization
-- Canny edge detection
-- Contour analysis
-- Size-based filtering
+---
 
-### 3. Adaptive Thresholding Method
-- Gaussian adaptive thresholding
-- Morphological processing
-- Component labeling
-- Area-based filtering
+## ✨ Features
 
-## 📁 Project Structure
+### Core Capabilities
+- 🎯 Multi-scale people detection
+- 🖼️ Robust background modeling
+- 🌊 Region-specific processing (water/sand)
+- 📊 Comprehensive evaluation metrics
+- 🎨 Advanced visualization tools
+
+### Technical Highlights
+- **Background Modeling**:
+  - Statistical modeling
+  - Adaptive thresholding
+  - Region-specific processing
+- **Detection System**:
+  - Multi-scale detection
+  - Aspect ratio analysis
+  - Shape-based filtering
+- **Evaluation Metrics**:
+  - Precision and recall
+  - Mean Square Error (MSE)
+  - Ground truth comparison
+
+---
+
+## 🏗️ System Architecture
+
 ```
-beach-crowd-detection/
-│
-├── crowd_detection_background.py   # Background subtraction implementation
-├── crowd_detection_edge.py         # Edge detection implementation
-├── requirements.txt                # Project dependencies
-├── Dataset/                        # Input images folder (not included)
-│   └── *.jpg                      # Beach surveillance images
-│
-├── detection_results/              # Output from background subtraction
-│   ├── presentation_visuals/       # Visualization images
-│   └── detection_summary.txt       # Detection results
-│
-└── alternative_detection_results/  # Output from edge detection
-    ├── presentation_visuals/       # Visualization images
-    └── detection_summary.txt       # Detection results
+beach_monitoring/
+├── src/
+│   ├── config/                 # Configuration files
+│   │   ├── config.yaml        # System parameters
+│   │   └── default_params.py  # Parameter handling
+│   ├── utils/                 # Utility functions
+│   │   └── image_loader.py    # Image processing utilities
+│   ├── detection/             # Core detection modules
+│   │   ├── background.py      # Background modeling
+│   │   └── people_detector.py # People detection algorithms
+│   ├── visualization/         # Visualization tools
+│   │   └── visualizer.py      # Result visualization
+│   ├── evaluation/            # Evaluation tools
+│   │   └── metrics.py         # Performance metrics
+│   └── main.py               # Main execution script
+└── requirements.txt          # Project dependencies
 ```
 
-## ⚙️ Requirements
-- Python 3.7+
-- OpenCV (cv2)
+---
+
+## 🚀 Installation
+
+### Prerequisites
+- Python 3.8+
+- OpenCV
 - NumPy
 - SciPy
 - Matplotlib
+- Pandas
+- PyYAML
 
-## 💻 Installation
+### Setup Steps
 
-1. Clone the repository:
+1. **Clone the Repository**
 ```bash
-git clone https://github.com/your-username/beach-crowd-detection.git
-cd beach-crowd-detection
+git clone https://github.com/joyarup/Beach-Crowd-Counting.git
+cd Beach-Crowd-Counting
 ```
 
-2. Create and activate a virtual environment (optional but recommended):
+2. **Create Virtual Environment (Optional but Recommended)**
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-3. Install required packages:
+3. **Install Dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-## 🚀 Usage
+---
 
-1. Prepare your dataset:
-   - Create a `Dataset` folder in the project root
-   - Add your beach surveillance images to this folder
+## 🎮 Usage
 
-2. Run background subtraction method:
+### Basic Usage
+
+1. **Prepare Your Data**
+   - Place images in `Dataset` folder
+   - Add ground truth CSV if available
+
+2. **Run the System**
 ```bash
-python crowd_detection_background.py
+cd src
+python main.py
 ```
 
-3. Run edge detection method:
-```bash
-python crowd_detection_edge.py
-```
+### Configuration
 
-## 📊 Results Visualization
+Modify `config/config.yaml` to adjust:
+- Detection parameters
+- Background modeling settings
+- Evaluation metrics
+- Visualization options
 
-The system generates comprehensive visualizations including:
+---
 
-- **Detection Process Visualization**
-  - Original image
-  - Background model
-  - Detection mask
-  - Final detection overlay
+## 🔧 Technical Details
 
-- **Analysis Graphs**
-  - People count trends
-  - Method comparison charts
-  - Detection accuracy visualization
+### Background Modeling
+- Statistical modeling using multiple techniques
+- Region-specific processing for water and sand areas
+- Robust to lighting changes and environmental factors
 
-## 🎯 Parameter Tuning
+### People Detection
+- Multi-scale detection for varying distances
+- Adaptive thresholding based on image regions
+- Shape and size-based filtering
 
-Key parameters that can be adjusted for better detection:
+### Evaluation System
+- Ground truth comparison
+- Multiple performance metrics
+- Per-image and overall statistics
 
-```python
-# Background Subtraction Parameters
-min_person_size = 25    # Minimum size for detection
-threshold_value = 35    # Binary threshold value
-kernel_size = (3,3)     # Morphological operation kernel
-morph_iterations = 2    # Number of morphological iterations
+---
 
-# Edge Detection Parameters
-clip_limit = 2.0        # CLAHE clip limit
-tile_size = (8,8)       # CLAHE tile size
-canny_thresh = (50,150) # Canny edge detection thresholds
-```
+## 📊 Results
 
-## 🔧 Image Processing Pipeline
+The system outputs:
+- Detection visualizations
+- Performance metrics
+- Background models
+- Evaluation reports
 
-### Background Subtraction Method
-1. Convert images to grayscale
-2. Create background model using median averaging
-3. Perform background subtraction
-4. Apply Gaussian blur for noise reduction
-5. Apply binary thresholding
-6. Use morphological operations for cleanup
-7. Detect and count connected components
+Example metrics include:
+- Average precision and recall
+- Mean Square Error (MSE)
+- False positive/negative rates
 
-### Edge Detection Method
-1. Apply CLAHE for contrast enhancement
-2. Convert to grayscale
-3. Apply Gaussian blur
-4. Detect edges using Canny detector
-5. Apply morphological operations
-6. Find and filter contours
-7. Count detected objects
+---
 
-## 📈 Performance Optimization
+## 🤝 Contributing
 
-The detection accuracy can be improved by adjusting these factors:
+We welcome contributions! Here's how you can help:
 
-- **Lighting Conditions**
-  - Adjust CLAHE parameters for different times of day
-  - Modify threshold values for varying light conditions
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-- **Distance Considerations**
-  - Adjust size filters based on camera position
-  - Modify detection parameters for different viewing angles
+---
 
-- **Crowd Density**
-  - Fine-tune morphological operations for different crowd levels
-  - Adjust connection parameters for grouped people
+## 📈 Future Improvements
+
+- [ ] Deep learning integration
+- [ ] Real-time processing optimization
+- [ ] Weather condition adaptation
+- [ ] Mobile deployment
+- [ ] Time-series analysis
+- [ ] Crowd density estimation
+- [ ] Automated alert system
+- [ ] API development
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👥 Contact
+
+Joyarup Mitra - [@joyarup](https://github.com/joyarup) - your.email@example.com
+
+Project Link: [https://github.com/joyarup/Beach-Crowd-Counting](https://github.com/joyarup/Beach-Crowd-Counting)
+
+---
+
+<div align="center">
+<p>Built with ❤️ by Joyarup Mitra</p>
+
+<p>
+If you find this project useful, please consider giving it a ⭐!
+</p>
+</div>
 
