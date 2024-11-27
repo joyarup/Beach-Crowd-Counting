@@ -1,0 +1,40 @@
+# config/config.yaml
+paths:
+  dataset_folder: "Dataset"
+  output_folder: "detection_results"
+  ground_truth_file: "labels_irving-arup_2024-11-26-08-18-48.csv"
+
+detection_params:
+  min_size: 100
+  max_size: 3000
+  scales: [1.0, 0.75, 0.5]
+  aspect_ratio_range:
+    distant: [0.2, 4.0]
+    near: [0.3, 3.0]
+  solidity_threshold:
+    distant: 0.2
+    near: 0.3
+
+background_params:
+  bilateral_filter:
+    diameter: 9
+    sigma_color: 75
+    sigma_space: 75
+  clahe:
+    clip_limit: 2.0
+    tile_grid_size: [8, 8]
+  denoising:
+    luminance: 10
+    color: 10
+    template_window: 7
+    search_window: 21
+
+evaluation_params:
+  max_distance: 50
+
+visualization_params:
+  figure_size: [20, 10]
+  dpi: 300
+  overlay_alpha: 0.3
+  ground_truth_color: [0, 255, 0]  # Green
+  detection_color: [0, 0, 255]     # Red

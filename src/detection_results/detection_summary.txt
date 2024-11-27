@@ -1,0 +1,19 @@
+1660114800.jpg: 77 people detected (Ground Truth: 26)
+1660118400.jpg: 60 people detected (Ground Truth: 68)
+1660122000.jpg: 48 people detected (Ground Truth: 92)
+1660125600.jpg: 90 people detected (Ground Truth: 152)
+1660129200.jpg: 107 people detected (Ground Truth: 156)
+1660132800.jpg: 103 people detected (Ground Truth: 181)
+1660136400.jpg: 90 people detected (Ground Truth: 140)
+1660143600.jpg: 85 people detected (Ground Truth: 163)
+1660147200.jpg: 221 people detected (Ground Truth: 171)
+1660150800.jpg: 365 people detected (Ground Truth: 146)
+
+Summary Statistics:
+Average detected count: 124.6
+Average ground truth count: 129.5
+Average count difference: 68.9
+Maximum detected count: 365
+Maximum ground truth count: 181
+Minimum detected count: 48
+Minimum ground truth count: 26
