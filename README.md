@@ -24,7 +24,6 @@ An advanced computer vision system for real-time crowd monitoring and analysis i
 - [Results](#-results)
 - [Contributing](#-contributing)
 - [Future Improvements](#-future-improvements)
-- [License](#-license)
 - [Contact](#-contact)
 
 ---
