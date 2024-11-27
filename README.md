@@ -58,6 +58,9 @@ An advanced computer vision system for real-time crowd monitoring and analysis i
 ```
 beach_monitoring/
 ├── src/
+│   ├── config/                 # Configuration management
+│   │   ├── config.yaml        # System parameters
+│   │   └── default_params.py  # Parameter handling
 │   ├── utils/                 # Utility functions
 │   │   └── image_loader.py    # Image processing utilities
 │   ├── detection/             # Core detection modules
@@ -82,6 +85,7 @@ beach_monitoring/
 - SciPy
 - Matplotlib
 - Pandas
+- PyYAML
 
 ### Setup Steps
 
@@ -109,16 +113,84 @@ pip install -r requirements.txt
 ### Basic Usage
 
 1. **Prepare Your Data**
-   - Place images in `Dataset` folder
-   - Add ground truth CSV if available
+   - Place images in the folder specified by `dataset_folder` in config.yaml
+   - Add ground truth CSV file as specified in configuration
 
-2. **Run the System**
+2. **Configure System (Optional)**
+   - Modify parameters in `src/config/config.yaml`
+   - Adjust detection, background, and evaluation settings
+
+3. **Run the System**
 ```bash
 cd src
 python main.py
 ```
 
+The system will use the configured parameters for processing.
+
 ---
+## ⚙️ Configuration
+
+The system uses a YAML-based configuration system for easy parameter management. Key configuration areas include:
+
+### Path Configuration
+```yaml
+paths:
+  dataset_folder: "Dataset"
+  output_folder: "detection_results"
+  ground_truth_file: "labels_irving-arup_2024-11-26-08-18-48.csv"
+```
+
+### Detection Parameters
+```yaml
+detection_params:
+  scales: [1.0, 0.75, 0.5]
+  min_size: 100
+  max_size: 3000
+  aspect_ratio:
+    distant:
+      min: 0.2
+      max: 4.0
+    near:
+      min: 0.3
+      max: 3.0
+  solidity_threshold:
+    distant: 0.2
+    near: 0.3
+```
+
+### Background Processing
+```yaml
+background_params:
+  bilateral_filter:
+    diameter: 9
+    sigma_color: 75
+    sigma_space: 75
+  clahe:
+    clip_limit: 2.0
+    tile_grid_size: [8, 8]
+  denoising:
+    luminance: 10
+    color: 10
+    template_window: 7
+    search_window: 21
+```
+
+### Evaluation Settings
+```yaml
+evaluation_params:
+  max_distance: 50
+
+visualization_params:
+  figure_size: [20, 10]
+  dpi: 300
+  overlay_alpha: 0.3
+```
+
+To modify system behavior:
+1. Navigate to `src/config/config.yaml`
+2. Adjust parameters as needed
+3. Changes take effect on next program run without code modification
 
 ## 🔧 Technical Details
 
