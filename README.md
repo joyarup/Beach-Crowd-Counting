@@ -201,7 +201,7 @@ We welcome contributions! Here's how you can help:
 
 ## 👥 Contact
 
-Arup Sarkar- [@joyarup](https://github.com/joyarup) - your.email@example.com
+Arup Sarkar- [@joyarup](https://github.com/joyarup) - arupbks@gmail.com
 
 Project Link: [https://github.com/joyarup/Beach-Crowd-Counting](https://github.com/joyarup/Beach-Crowd-Counting)
 
