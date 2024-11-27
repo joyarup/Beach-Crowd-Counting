@@ -111,11 +111,10 @@ def detect_and_count_people(image, background=None):
     
     return len(all_contours), mask
 
-def process_beach_images(images):
+def process_beach_images(images, background=None):
     """Process multiple beach images to detect and count people."""
-    background = create_background_model(images)
     if background is None:
-        return [], None
+        return []
 
     results = []
     print("\nProcessing individual frames...")
@@ -128,4 +127,4 @@ def process_beach_images(images):
             'detection_mask': mask
         })
 
-    return results, background
+    return results

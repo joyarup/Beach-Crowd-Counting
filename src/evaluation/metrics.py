@@ -1,3 +1,4 @@
+# src/evaluation/metrics.py
 import numpy as np
 import pandas as pd
 from collections import defaultdict
@@ -100,14 +101,6 @@ def calculate_detection_metrics(ground_truth_coords, detection_coords, max_dista
 def evaluate_detections(results, ground_truth_file, image_filenames):
     """
     Evaluate detection results against ground truth data.
-    
-    Parameters:
-    results: List of dictionaries containing detection results
-    ground_truth_file: Path to ground truth CSV file
-    image_filenames: List of image filenames in the same order as results
-    
-    Returns:
-    Dictionary containing overall evaluation metrics
     """
     # Load ground truth data
     ground_truth = load_ground_truth(ground_truth_file)
@@ -121,7 +114,7 @@ def evaluate_detections(results, ground_truth_file, image_filenames):
                                               result['detection_mask'].shape)
         
         # Get ground truth coordinates for this image
-        gt_coords = ground_truth[filename]
+        gt_coords = ground_truth.get(filename, [])
         
         # Calculate metrics
         metrics = calculate_detection_metrics(gt_coords, detection_coords)
